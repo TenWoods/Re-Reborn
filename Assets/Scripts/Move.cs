@@ -21,12 +21,18 @@ public class Move : MonoBehaviour
 	[SerializeField]
 	private float switchTime;
 	private Rigidbody rb;
+	[SerializeField]
 	private bool isGround;
 	private Animator animator;
 	//步行动画的切换
 	private float walkAnimate = 0.66f;
 	//跳跃计时器
 	private float jumpTimer;
+	//胶水处影响
+	[SerializeField]
+	private float jumpGlue;
+	[SerializeField]
+	private float speedGlue;
 
 	private void Start() 
 	{
@@ -38,18 +44,15 @@ public class Move : MonoBehaviour
 
 	private void Update() 
 	{
-		if (Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.D))
+		if (Input.GetKey(KeyCode.A))
 		{
-			if (Input.GetKey(KeyCode.A))
-			{
-				transform.rotation = Quaternion.Euler(0, -90, 0);
-				Walk(-1);
-			}
-			else
-			{
-				transform.rotation = Quaternion.Euler(0, 90, 0);
-				Walk(1);
-			}
+			transform.rotation = Quaternion.Euler(0, -90, 0);
+			Walk(-1);
+		}
+		if (Input.GetKey(KeyCode.D))
+		{
+			transform.rotation = Quaternion.Euler(0, 90, 0);
+			Walk(1);
 		}
 		if (Input.GetKey(KeyCode.W))
 		{
@@ -79,17 +82,17 @@ public class Move : MonoBehaviour
 		{
 			animator.SetFloat("Blend", walkAnimate);
 		}
-		float velocity_y = rb.velocity.y;
-		rb.velocity = new Vector3(dir, velocity_y, 0) * speed;
+		rb.velocity = new Vector3(dir * speed, rb.velocity.y, 0);
 		
 	}
 
 	private void Jump()
 	{
-		if (playerState != State.Jump && isGround)
+		if (isGround)
 		{
 			animator.SetFloat("Blend", 0.33f);
-			rb.AddForce(new Vector3(0, jumpForce, 0));
+			rb.AddForce(Vector3.up * jumpForce);
+			Debug.Log(rb.velocity);
 			isGround = false;
 			animator.SetFloat("Blend", 0);
 			playerState = State.Jump;
@@ -101,7 +104,7 @@ public class Move : MonoBehaviour
 		if (other.transform.tag == "Floor")
 		{
 			isGround = true;
-			if (playerState == State.Jump)
+			if (playerState != State.Walk)
 			{
 				playerState = State.Idle;
 				animator.SetFloat("Blend", 0.33f);
@@ -109,15 +112,17 @@ public class Move : MonoBehaviour
 		}
 	}
 
-	public void GlueSet(float mag)	
+	public void GlueSet()	
 	{
 		walkAnimate = 1;
-		jumpForce /= mag;
+		jumpForce = jumpGlue;
+		speed = speedGlue;
 	}
 
-	public void GlueReset(float mag)
+	public void GlueReset()
 	{
 		walkAnimate = 0.66f;
-		jumpForce *= mag;
+		jumpForce = jumpGlue;
+		speed = speedGlue;
 	}
 }
