@@ -11,5 +11,10 @@ public class TrapInSticky : TriggerThing {
 	void OnTriggerEnter(Collider other)
 	{
 		// TODO 调用一个使玩家减速的函数
+		if(other.gameObject.CompareTag("Player"))
+		{
+			other.gameObject.GetComponent<Move>().GlueReset();
+			Debug.Log("Slow down");
+		}
 	}
 }
