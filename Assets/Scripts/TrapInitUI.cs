@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class TrapInitUI : TriggerThing {
-	public GameObject canvas;
-	private Text thisText;
 	/// <summary>
 	/// OnTriggerEnter is called when the Collider other enters the trigger.
 	/// </summary>
@@ -16,7 +14,7 @@ public class TrapInitUI : TriggerThing {
 			if(!isFirstTrig)
 			{
 				Debug.Log("should init a UI");
-				canvas.SetActive(true);
+				myCanvas.SetActive(true);
 			}
 		}
 	}
@@ -31,7 +29,7 @@ public class TrapInitUI : TriggerThing {
 			if(!isFirstTrig)
 			{
 				//Debug.Log("should init a UI");
-				canvas.SetActive(false);
+				myCanvas.SetActive(false);
 			}
 		}
 	}

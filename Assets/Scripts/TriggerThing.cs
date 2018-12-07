@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerThing : MonoBehaviour {
-	protected GameObject canvas;
+	public GameObject myCanvas;
 
 	protected bool isFirstTrig = false;
 
