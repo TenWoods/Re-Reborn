@@ -28,6 +28,11 @@ public class Move : MonoBehaviour
 	private float walkAnimate = 0.66f;
 	//跳跃计时器
 	private float jumpTimer;
+	//胶水处影响
+	[SerializeField]
+	private float jumpGlue;
+	[SerializeField]
+	private float speedGlue;
 
 	private void Start() 
 	{
@@ -107,15 +112,17 @@ public class Move : MonoBehaviour
 		}
 	}
 
-	public void GlueSet(float mag)	
+	public void GlueSet()	
 	{
 		walkAnimate = 1;
-		jumpForce /= mag;
+		jumpForce = jumpGlue;
+		speed = speedGlue;
 	}
 
-	public void GlueReset(float mag)
+	public void GlueReset()
 	{
 		walkAnimate = 0.66f;
-		jumpForce *= mag;
+		jumpForce = jumpGlue;
+		speed = speedGlue;
 	}
 }

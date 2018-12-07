@@ -233,11 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79af85f3e1855344aa553d34813bea7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   jumpForce: 200
-  playerState: 0
+  playerState: 2
   switchTime: 0.2
   isGround: 0
+  jumpGlue: 0
+  speedGlue: 0
 --- !u!1 &1298032912
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +330,7 @@ MeshCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1923905099}
-  m_Material: {fileID: 13400000, guid: a84f45762f4f6ea4e8ce68b3e1d0535a, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
