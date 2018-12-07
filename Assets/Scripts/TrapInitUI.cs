@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+// 当玩家死在对应陷阱触发对应UI
 public class TrapInitUI : TriggerThing {
 	/// <summary>
 	/// OnTriggerEnter is called when the Collider other enters the trigger.

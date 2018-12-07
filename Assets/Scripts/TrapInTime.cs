@@ -20,6 +20,7 @@ public class TrapInTime : TriggerThing {
 
 			}
 			other.gameObject.GetComponent<PlayerStatement>().Dead();
+			OnCallGameSystem();
 		}
 
 

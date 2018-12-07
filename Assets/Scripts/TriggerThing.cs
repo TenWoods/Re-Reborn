@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerThing : MonoBehaviour {
+	public GameController gameSystem;
 	public GameObject myCanvas;
 
 	protected bool isFirstTrig = false;
@@ -13,5 +14,10 @@ public class TriggerThing : MonoBehaviour {
 	void Awake()
 	{
 		//canvas = GameObject.Find("")
+	}
+
+	public void OnCallGameSystem()
+	{
+		gameSystem.SendMessage("AddDeadCount");
 	}
 }
