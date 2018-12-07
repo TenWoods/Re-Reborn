@@ -18,13 +18,17 @@ public class Move : MonoBehaviour
 	private float jumpForce;
 	[SerializeField]
 	private State playerState;
+	[SerializeField]
+	private float switchTime;
 	private Rigidbody rb;
 	private bool isGround;
+	private Animator animator;
 
 	private void Start() 
 	{
 		playerState = State.Idle;
 		rb = GetComponent<Rigidbody>();
+		animator = GetComponent<Animator>();
 		isGround = true;
 	}
 
@@ -32,16 +36,14 @@ public class Move : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.D))
 		{
-			if (playerState != State.Jump)
-			{
-				playerState = State.Walk;
-			}
 			if (Input.GetKey(KeyCode.A))
 			{
+				transform.rotation = Quaternion.Euler(0, -90, 0);
 				Walk(-1);
 			}
 			else
 			{
+				transform.rotation = Quaternion.Euler(0, 90, 0);
 				Walk(1);
 			}
 		}
@@ -55,21 +57,37 @@ public class Move : MonoBehaviour
 			{
 				rb.velocity = Vector3.zero;
 			}
+			if (isGround)
+			{
+				animator.SetFloat("Blend", 0.33f);
+			}
 		}
 	}
 
 	private void Walk(int dir)
 	{
+		if (playerState != State.Jump)
+		{
+			playerState = State.Walk;
+			animator.SetFloat("Blend", 0.66f, switchTime, Time.deltaTime);
+		}
+		else if (playerState == State.Walk)
+		{
+			animator.SetFloat("Blend", 0.66f);
+		}
 		float velocity_y = rb.velocity.y;
 		rb.velocity = new Vector3(dir, velocity_y, 0) * speed;
+		
 	}
 
 	private void Jump()
 	{
 		if (playerState != State.Jump && isGround)
 		{
+			animator.SetFloat("Blend", 0.33f);
 			rb.AddForce(new Vector3(0, jumpForce, 0));
 			isGround = false;
+			animator.SetFloat("Blend", 0);
 			playerState = State.Jump;
 		}
 	}

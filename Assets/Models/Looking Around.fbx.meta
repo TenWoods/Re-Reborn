@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b0a624efe02b2c04e98c49ffe9d7d726
+guid: 9ad0fe7d762da4a42baab6627de46774
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -75,7 +75,7 @@ ModelImporter:
     400068: unamed
     2100000: No Name
     4300000: unamed
-    7400000: jump
+    7400000: idle
     9500000: //RootNode
     13700000: unamed
   externalObjects: {}
@@ -107,18 +107,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: jump
+      name: idle
       takeName: mixamo.com
-      firstFrame: 62
-      lastFrame: 86
+      firstFrame: 0
+      lastFrame: 544
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
