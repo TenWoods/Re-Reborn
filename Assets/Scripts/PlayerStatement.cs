@@ -8,6 +8,7 @@ public class PlayerStatement : MonoBehaviour
 
 	public void Dead()
 	{
+		Debug.Log("Die");
 		isAlive = false;
 	}
 }

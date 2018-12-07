@@ -429,6 +429,17 @@ MonoBehaviour:
   jumpForce: 200
   playerState: 0
   switchTime: 0.2
+--- !u!114 &860188953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860188949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b98a32c3bd33846b86149e34f5ec22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012373327
 GameObject:
   m_ObjectHideFlags: 0

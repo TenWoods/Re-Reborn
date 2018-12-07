@@ -10,10 +10,18 @@ public class TrapInTime : TriggerThing {
 	/// <param name="other">The other Collider involved in this collision.</param>
 	void OnTriggerEnter(Collider other)
 	{
-		if(!isFirstTrig)
+		if(other.gameObject.CompareTag("Player"))
 		{
 			
+			if(!isFirstTrig)
+			{
+				//init a UI
+				Debug.Log("Step in Trap");
+
+			}
+			other.gameObject.GetComponent<PlayerStatement>().Dead();
 		}
-		Debug.Log("Step in Trap");
+
+
 	}
 }
