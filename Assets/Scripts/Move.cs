@@ -23,6 +23,10 @@ public class Move : MonoBehaviour
 	private Rigidbody rb;
 	private bool isGround;
 	private Animator animator;
+	//步行动画的切换
+	private float walkAnimate = 0.66f;
+	//跳跃计时器
+	private float jumpTimer;
 
 	private void Start() 
 	{
@@ -69,11 +73,11 @@ public class Move : MonoBehaviour
 		if (playerState != State.Jump)
 		{
 			playerState = State.Walk;
-			animator.SetFloat("Blend", 0.66f, switchTime, Time.deltaTime);
+			animator.SetFloat("Blend", walkAnimate, switchTime, Time.deltaTime);
 		}
 		else if (playerState == State.Walk)
 		{
-			animator.SetFloat("Blend", 0.66f);
+			animator.SetFloat("Blend", walkAnimate);
 		}
 		float velocity_y = rb.velocity.y;
 		rb.velocity = new Vector3(dir, velocity_y, 0) * speed;
@@ -100,7 +104,20 @@ public class Move : MonoBehaviour
 			if (playerState == State.Jump)
 			{
 				playerState = State.Idle;
+				animator.SetFloat("Blend", 0.33f);
 			}
 		}
-	}	
+	}
+
+	public void GlueSet(float mag)	
+	{
+		walkAnimate = 1;
+		jumpForce /= mag;
+	}
+
+	public void GlueReset(float mag)
+	{
+		walkAnimate = 0.66f;
+		jumpForce *= mag;
+	}
 }
