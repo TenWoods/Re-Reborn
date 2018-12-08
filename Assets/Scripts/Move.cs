@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
 	private bool isGround;
 	private Animator animator;
 	//步行动画的切换
-	private float walkAnimate = 0.5f;
+	private float walkAnimate = -1.0f;
 	//跳跃计时器
 	private float jumpTimer;
 	//胶水处影响
@@ -70,7 +70,8 @@ public class Move : MonoBehaviour
 			}
 			if (isGround)
 			{
-				animator.SetFloat("Blend", 0.33f);
+				animator.SetFloat("Blendx", 0.0f);
+				animator.SetFloat("Blendy", 0.0f);
 			}
 		}
 	}
@@ -80,11 +81,11 @@ public class Move : MonoBehaviour
 		if (playerState != State.Jump)
 		{
 			playerState = State.Walk;
-			animator.SetFloat("Blend", walkAnimate, switchTime, Time.deltaTime);
+			animator.SetFloat("Blendx", walkAnimate, switchTime, Time.deltaTime);
 		}
 		else if (playerState == State.Walk)
 		{
-			animator.SetFloat("Blend", walkAnimate);
+			animator.SetFloat("Blendx", walkAnimate);
 		}
 		rb.velocity = new Vector3(dir * m_speed, rb.velocity.y, 0);
 		
@@ -94,10 +95,11 @@ public class Move : MonoBehaviour
 	{
 		if (isGround)
 		{
-			animator.SetFloat("Blend", 0.25f);
+			animator.SetFloat("Blendx", 0.0f);
+			animator.SetFloat("Blendy", 0.0f);
 			rb.AddForce(Vector3.up * m_jumpForce);
 			isGround = false;
-			animator.SetFloat("Blend", 0);
+			animator.SetFloat("Blendy", 1.0f);
 			playerState = State.Jump;
 		}
 	}
@@ -110,21 +112,22 @@ public class Move : MonoBehaviour
 			if (playerState != State.Walk)
 			{
 				playerState = State.Idle;
-				animator.SetFloat("Blend", 0.25f);
+				animator.SetFloat("Blendx", 0.0f);
+				animator.SetFloat("Blendy", 0.0f);
 			}
 		}
 	}
 
 	public void GlueSet()	
 	{
-		walkAnimate = 0.75f;
+		walkAnimate = 1.0f;
 		m_jumpForce = jumpGlue;
 		m_speed = speedGlue;
 	}
 
 	public void GlueReset()
 	{
-		walkAnimate = 0.5f;
+		walkAnimate = -1.0f;
 		m_jumpForce = jumpForce;
 		m_speed = speed;
 	}

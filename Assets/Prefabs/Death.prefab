@@ -1043,7 +1043,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &65585684990157554
 BoxCollider:
@@ -1087,6 +1087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnSpeed: 1
+  burnfinish: 0
+  burnStart: 0
 --- !u!137 &137258450253735938
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
