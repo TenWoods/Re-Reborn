@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
 	private bool isGround;
 	private Animator animator;
 	//步行动画的切换
-	private float walkAnimate = 0.66f;
+	private float walkAnimate = 0.5f;
 	//跳跃计时器
 	private float jumpTimer;
 	//胶水处影响
@@ -94,7 +94,7 @@ public class Move : MonoBehaviour
 	{
 		if (isGround)
 		{
-			animator.SetFloat("Blend", 0.33f);
+			animator.SetFloat("Blend", 0.25f);
 			rb.AddForce(Vector3.up * m_jumpForce);
 			isGround = false;
 			animator.SetFloat("Blend", 0);
@@ -110,21 +110,21 @@ public class Move : MonoBehaviour
 			if (playerState != State.Walk)
 			{
 				playerState = State.Idle;
-				animator.SetFloat("Blend", 0.33f);
+				animator.SetFloat("Blend", 0.25f);
 			}
 		}
 	}
 
 	public void GlueSet()	
 	{
-		walkAnimate = 1;
+		walkAnimate = 0.75f;
 		m_jumpForce = jumpGlue;
 		m_speed = speedGlue;
 	}
 
 	public void GlueReset()
 	{
-		walkAnimate = 0.66f;
+		walkAnimate = 0.5f;
 		m_jumpForce = jumpForce;
 		m_speed = speed;
 	}
