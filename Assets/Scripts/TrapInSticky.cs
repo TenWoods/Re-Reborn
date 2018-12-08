@@ -17,4 +17,16 @@ public class TrapInSticky : TriggerThing {
 			Debug.Log("Slow down");
 		}
 	}
+	/// <summary>
+	/// OnTriggerExit is called when the Collider other has stopped touching the trigger.
+	/// </summary>
+	/// <param name="other">The other Collider involved in this collision.</param>
+	void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject.CompareTag("Player"))
+		{
+			other.gameObject.GetComponent<Move>().GlueSet();
+			Debug.Log("restart");
+		}
+	}
 }
