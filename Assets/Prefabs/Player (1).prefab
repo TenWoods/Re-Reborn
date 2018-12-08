@@ -539,6 +539,8 @@ GameObject:
   - component: {fileID: 65032468230280876}
   - component: {fileID: 114343230901949862}
   - component: {fileID: 114495449121461466}
+  - component: {fileID: 75532460893213826}
+  - component: {fileID: 135136228194451334}
   m_Layer: 8
   m_Name: Player (1)
   m_TagString: Player
@@ -906,7 +908,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948563518099474}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -269.1, y: 7, z: 18}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4641079055895558}
@@ -1245,7 +1247,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -1262,6 +1264,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.61430526, y: 1.2206432, z: 0.2645231}
   m_Center: {x: 0.019564226, y: 0.6098328, z: 0.024515897}
+--- !u!75 &75532460893213826
+ConstantForce:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948563518099474}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -9.8, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!95 &95382747407356872
 Animator:
   serializedVersion: 3
@@ -1314,8 +1327,20 @@ MonoBehaviour:
   isGround: 0
   jumpGlue: 150
   speedGlue: 0.66
-  ropeSpeed: 0
+  ropeSpeed: 2
   ropeNode: []
+--- !u!135 &135136228194451334
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948563518099474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.57, z: 0}
 --- !u!137 &137400809664629636
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
