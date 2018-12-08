@@ -33,7 +33,7 @@ public class PlayerStatement : MonoBehaviour
 		animator.SetFloat("Blendy", -1.0f, 0.5f, Time.deltaTime);
 		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
 		{
-			GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
+			//GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
 			//Debug.Log("find");
 			DeathInit();
 		}

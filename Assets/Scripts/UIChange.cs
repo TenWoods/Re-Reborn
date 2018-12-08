@@ -59,7 +59,7 @@ public class UIChange : MonoBehaviour
 		changeBackground = true;
 		targetColor_a = 0;
 		GameObject g = Instantiate(gc.player,gc.startPos,Quaternion.Euler(0,0,0));
-		gc.player = g;
+		//gc.player = g;
 		gc.FollowPlayer(g);
 		CloseUI();
 	}

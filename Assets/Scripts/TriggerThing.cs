@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerThing : MonoBehaviour {
 	public GameController gameSystem;
-	public GameObject myCanvas;
+	//public GameObject myCanvas;
 
 	protected bool isFirstTrig = false;
 

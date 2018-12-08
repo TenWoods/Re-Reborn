@@ -15,7 +15,7 @@ public class TrapInitUI : TriggerThing {
 			if(!isFirstTrig)
 			{
 				Debug.Log("should init a UI");
-				myCanvas.SetActive(true);
+				//myCanvas.SetActive(true);
 			}
 		}
 	}
@@ -30,7 +30,7 @@ public class TrapInitUI : TriggerThing {
 			if(!isFirstTrig)
 			{
 				//Debug.Log("should init a UI");
-				myCanvas.SetActive(false);
+				//myCanvas.SetActive(false);
 			}
 		}
 	}
