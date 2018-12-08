@@ -7,7 +7,7 @@ public enum State
 	Jump,
 	Walk,
 	Idle,
-	Fall
+	OnRope
 }
 
 public class Move : MonoBehaviour 
@@ -27,7 +27,8 @@ public class Move : MonoBehaviour
 	private bool isGround;
 	private Animator animator;
 	//步行动画的切换
-	private float walkAnimate = -1.0f;
+	private float walkAnimate_x = -1.0f;
+	private float walkAnimate_y = 0.0f;
 	//跳跃计时器
 	private float jumpTimer;
 	//胶水处影响
@@ -35,6 +36,12 @@ public class Move : MonoBehaviour
 	private float jumpGlue;
 	[SerializeField]
 	private float speedGlue;
+	//绳子的节点数
+	[SerializeField]
+	private float ropeSpeed;
+	private int ropeCount;
+	[SerializeField]
+	public GameObject[] ropeNode;
 
 	private void Start() 
 	{
@@ -48,19 +55,26 @@ public class Move : MonoBehaviour
 
 	private void Update() 
 	{
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKey(KeyCode.A) && playerState != State.OnRope)
 		{
 			transform.rotation = Quaternion.Euler(0, -90, 0);
 			Walk(-1);
 		}
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKey(KeyCode.D) && playerState != State.OnRope)
 		{
 			transform.rotation = Quaternion.Euler(0, 90, 0);
 			Walk(1);
 		}
 		if (Input.GetKey(KeyCode.W))
 		{
-			Jump();
+			if (playerState != State.OnRope)
+			{
+				Jump();
+			}
+			else
+			{
+				OnRope();
+			}
 		}
 		if (!Input.anyKey)
 		{
@@ -81,14 +95,23 @@ public class Move : MonoBehaviour
 		if (playerState != State.Jump)
 		{
 			playerState = State.Walk;
-			animator.SetFloat("Blendx", walkAnimate, switchTime, Time.deltaTime);
+			animator.SetFloat("Blendx", walkAnimate_x, switchTime, Time.deltaTime);
+			animator.SetFloat("Blendy", walkAnimate_y);
 		}
 		else if (playerState == State.Walk)
 		{
-			animator.SetFloat("Blendx", walkAnimate);
+			animator.SetFloat("Blendx", walkAnimate_x);
+			animator.SetFloat("Blendy", walkAnimate_y);
 		}
 		rb.velocity = new Vector3(dir * m_speed, rb.velocity.y, 0);
-		
+	}
+
+	private void OnRope()
+	{
+		animator.SetFloat("Blendx", -0.5f);
+		animator.SetFloat("Blendy", -0.5f);
+		rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+		transform.localPosition += new Vector3(0, ropeSpeed * Time.deltaTime, 0);
 	}
 
 	private void Jump()
@@ -118,16 +141,35 @@ public class Move : MonoBehaviour
 		}
 	}
 
+    private void OnTriggerEnter(Collider other)
+	{
+		if (other.transform.tag == "Rope" && playerState != State.OnRope)
+		{
+			playerState = State.OnRope;
+			rb.velocity = Vector3.zero;
+			transform.parent = other.transform;
+			transform.localPosition = new Vector3(-1.6f, 0, -2.5f);
+			GetComponent<ConstantForce>().force = Vector3.zero;
+		}
+		if(other.transform.tag == "Rope" && other.name == "RopeParent" && playerState == State.OnRope)
+		{
+			playerState = State.Idle;
+			transform.parent = null;
+			transform.position = other.transform.position + new Vector3(0.5f, 0, 0);
+			GetComponent<ConstantForce>().force = new Vector3(0, -9.8f, 0);
+		}
+	}
+
 	public void GlueSet()	
 	{
-		walkAnimate = 1.0f;
+		walkAnimate_x = 1.0f;
 		m_jumpForce = jumpGlue;
 		m_speed = speedGlue;
 	}
 
 	public void GlueReset()
 	{
-		walkAnimate = -1.0f;
+		walkAnimate_x = -1.0f;
 		m_jumpForce = jumpForce;
 		m_speed = speed;
 	}
