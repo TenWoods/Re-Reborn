@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+<<<<<<< HEAD
   - Rock
+=======
+  - Rope
+>>>>>>> 0ee4b70b44fac449491627d38ce3d791e60364e9
   layers:
   - Default
   - TransparentFX
