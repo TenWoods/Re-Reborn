@@ -23,6 +23,10 @@ public class PlayerStatement : MonoBehaviour
 		{
 			animator.SetFloat("Blendx", -0.5f, 1f, Time.deltaTime);
 			animator.SetFloat("Blendy", 0.5f, 1f, Time.deltaTime);
+			if (Mathf.Abs(animator.GetFloat("Blendy") - 0.1f) <= 0.006f)
+			{
+				GameObject.Find("GameSystem").GetComponent<Review>().StartReview = true;
+			}
 			return;
 		}
 		else if (isAlive)
@@ -35,6 +39,7 @@ public class PlayerStatement : MonoBehaviour
 		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
 		{
 			GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
+			//Debug.Log("find");
 			DeathInit();
 		}
 	}

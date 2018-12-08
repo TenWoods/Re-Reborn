@@ -16,7 +16,7 @@ public class Review : MonoBehaviour
 
 	private void Start() 
 	{
-		//deaths = new List<GameObject>();
+		deaths = new List<GameObject>();
 	}
 
 	private void Update() 
@@ -29,6 +29,9 @@ public class Review : MonoBehaviour
 		if (count >= deaths.Count)
 		{
 			this.enabled = false;
+			mainCamera.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+			GameObject.FindWithTag("Player").GetComponent<PlayerStatement>().gameEnd = false;
+			GameObject.FindWithTag("Player").GetComponent<Move>().enabled = true;
 			return;
 		}
 		float x = mainCamera.transform.position.x;
