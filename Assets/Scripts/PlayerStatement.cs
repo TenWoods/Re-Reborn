@@ -38,6 +38,13 @@ public class PlayerStatement : MonoBehaviour
 		isAlive = false;
 	}
 
+	public void KneelDown()
+	{
+		transform.rotation = Quaternion.Euler(0, -90, 0);
+		animator.SetFloat("Blendx", -0.5f);
+		animator.SetFloat("Blendy", 0.5f);
+	}
+
 	public void DeathInit()
 	{
 		Debug.Log(transform.rotation.eulerAngles.y);
