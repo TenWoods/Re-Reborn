@@ -21,6 +21,7 @@ public class Review : MonoBehaviour
 
 	private void Update() 
 	{
+		Debug.Log(deaths.Count);
 		if (!startReview)
 		{
 			return;
