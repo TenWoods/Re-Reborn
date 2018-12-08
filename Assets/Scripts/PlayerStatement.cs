@@ -26,6 +26,7 @@ public class PlayerStatement : MonoBehaviour
 		animator.SetFloat("Blendy", -1.0f, 0.5f, Time.deltaTime);
 		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
 		{
+			GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
 			DeathInit();
 		}
 	}
@@ -33,19 +34,21 @@ public class PlayerStatement : MonoBehaviour
 	public void Dead()
 	{
 		Debug.Log("Die");
+		this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		isAlive = false;
 	}
 
 	public void DeathInit()
 	{
 		Debug.Log(transform.rotation.eulerAngles.y);
+		Review r = GameObject.Find("GameSystem").GetComponent<Review>();
 		if (transform.rotation.eulerAngles.y > 85 && transform.rotation.eulerAngles.y < 265)
 		{
-			Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 90, 0));
+			r.AddDeath(Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 90, 0)));
 		}
 		else
 		{
-			Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 270, 0));
+			r.AddDeath(Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 270, 0)));
 		}
 		Destroy(this.gameObject);
 	}

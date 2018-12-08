@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using CineMachine.Examples;
 // 用于游戏内循环大逻辑，重置玩家节点以及调用问题显示
 public class GameController : MonoBehaviour {
-
+	public GameObject cineMachine;
+	public GameObject player;
+	public Vector3 startPos;
 	[SerializeField]
 	private int deadCount = 0;
 	[SerializeField]
 	private bool isGetEnding = false;
+	private GameObject play;
 
 	public List<GameObject> texts = new List<GameObject>();
 	public Canvas canvas;
@@ -46,5 +50,14 @@ public class GameController : MonoBehaviour {
 	{
 		InitQuestion(deadCount);
 		deadCount++;
+		play = Instantiate(player,startPos,Quaternion.Euler(0,0,0));
+	}
+
+	void FollowPlayer()
+	{
+		//
+		play.SetActive(true);
+		cineMachine.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Follow = play.transform;
+		cineMachine.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_LookAt = play.transform;
 	}
 }

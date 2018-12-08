@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 65585684990157554}
   m_Layer: 0
   m_Name: Death
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -718,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 1083351146150624}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4437831463052360}
   - {fileID: 4620583901531578}

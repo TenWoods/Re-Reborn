@@ -1024,7 +1024,7 @@ Transform:
   m_GameObject: {fileID: 1282732882487372}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4610941901718644}
   - {fileID: 4474507498727550}
@@ -1105,6 +1105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b98a32c3bd33846b86149e34f5ec22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 1
+  deathoffset: 0
+  deathPrefab: {fileID: 0}
 --- !u!137 &137821877460144438
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

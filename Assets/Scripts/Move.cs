@@ -48,6 +48,10 @@ public class Move : MonoBehaviour
 
 	private void Update() 
 	{
+		if (!this.GetComponent<PlayerStatement>().IsAlive)
+		{
+			return;
+		}
 		if (Input.GetKey(KeyCode.A))
 		{
 			transform.rotation = Quaternion.Euler(0, -90, 0);
@@ -115,6 +119,12 @@ public class Move : MonoBehaviour
 				animator.SetFloat("Blendx", 0.0f);
 				animator.SetFloat("Blendy", 0.0f);
 			}
+		}
+		if(other.transform.tag == "Rock")
+		{
+			Debug.Log("add force");
+			Vector3 dir = other.gameObject.GetComponent<Rigidbody>().velocity.normalized;
+			rb.AddForce(dir*jumpForce*2);
 		}
 	}
 
