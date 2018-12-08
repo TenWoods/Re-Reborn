@@ -30,6 +30,7 @@ public class PlayerStatement : MonoBehaviour
 			return;
 		}
 		gameObject.GetComponent<Move>().enabled = false;
+		animator.SetFloat("Blendx", 0.0f);
 		animator.SetFloat("Blendy", -1.0f, 0.5f, Time.deltaTime);
 		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
 		{
