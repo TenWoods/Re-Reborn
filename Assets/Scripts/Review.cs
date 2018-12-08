@@ -16,11 +16,12 @@ public class Review : MonoBehaviour
 
 	private void Start() 
 	{
-		deaths = new List<GameObject>();
+		//deaths = new List<GameObject>();
 	}
 
 	private void Update() 
 	{
+		Debug.Log(deaths.Count);
 		if (!startReview)
 		{
 			return;
@@ -28,6 +29,7 @@ public class Review : MonoBehaviour
 		if (count >= deaths.Count)
 		{
 			this.enabled = false;
+			return;
 		}
 		float x = mainCamera.transform.position.x;
 		x = Mathf.Lerp(x, deaths[count].transform.position.x, Time.deltaTime * moveSpeed);
