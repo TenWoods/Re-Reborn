@@ -20,14 +20,14 @@ public class GameController : MonoBehaviour {
 	// 当玩家死了对应次数出现对应问题UI
 	void InitQuestion(int count)
 	{
-		texts[count].SetActive(true);
+		//texts[count].SetActive(true);
 		// 暂停游戏，等待触发按钮事件
 	}
 	// Use this for initialization
 	void Start () {
 		for(int i = 0;i<canvas.transform.childCount;i++)
 		{
-			texts.Add(canvas.transform.GetChild(i).gameObject);
+			//texts.Add(canvas.transform.GetChild(i).gameObject);
 		}
 
 	}
