@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		for(int i = 0;i<canvas.transform.GetChildCount();i++)
+		for(int i = 0;i<canvas.transform.childCount;i++)
 		{
 			texts.Add(canvas.transform.GetChild(i).gameObject);
 		}

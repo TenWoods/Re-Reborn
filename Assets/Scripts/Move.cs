@@ -16,6 +16,8 @@ public class Move : MonoBehaviour
 	private float speed;
 	[SerializeField]
 	private float jumpForce;
+	private	float m_speed;
+	private float m_jumpForce;
 	[SerializeField]
 	private State playerState;
 	[SerializeField]
@@ -36,6 +38,8 @@ public class Move : MonoBehaviour
 
 	private void Start() 
 	{
+		m_speed = speed;
+		m_jumpForce = jumpForce;
 		playerState = State.Idle;
 		rb = GetComponent<Rigidbody>();
 		animator = GetComponent<Animator>();
@@ -82,7 +86,7 @@ public class Move : MonoBehaviour
 		{
 			animator.SetFloat("Blend", walkAnimate);
 		}
-		rb.velocity = new Vector3(dir * speed, rb.velocity.y, 0);
+		rb.velocity = new Vector3(dir * m_speed, rb.velocity.y, 0);
 		
 	}
 
@@ -91,8 +95,7 @@ public class Move : MonoBehaviour
 		if (isGround)
 		{
 			animator.SetFloat("Blend", 0.33f);
-			rb.AddForce(Vector3.up * jumpForce);
-			Debug.Log(rb.velocity);
+			rb.AddForce(Vector3.up * m_jumpForce);
 			isGround = false;
 			animator.SetFloat("Blend", 0);
 			playerState = State.Jump;
@@ -115,14 +118,14 @@ public class Move : MonoBehaviour
 	public void GlueSet()	
 	{
 		walkAnimate = 1;
-		jumpForce = jumpGlue;
-		speed = speedGlue;
+		m_jumpForce = jumpGlue;
+		m_speed = speedGlue;
 	}
 
 	public void GlueReset()
 	{
 		walkAnimate = 0.66f;
-		jumpForce = jumpGlue;
-		speed = speedGlue;
+		m_jumpForce = jumpForce;
+		m_speed = speed;
 	}
 }

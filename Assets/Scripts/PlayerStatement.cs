@@ -11,4 +11,12 @@ public class PlayerStatement : MonoBehaviour
 		Debug.Log("Die");
 		isAlive = false;
 	}
+
+	public bool IsAlive
+	{
+		get
+		{
+			return isAlive;
+		}
+	}
 }
