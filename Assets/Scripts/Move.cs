@@ -55,15 +55,11 @@ public class Move : MonoBehaviour
 
 	private void Update() 
 	{
-<<<<<<< HEAD
 		if (!this.GetComponent<PlayerStatement>().IsAlive)
 		{
 			return;
 		}
-		if (Input.GetKey(KeyCode.A))
-=======
 		if (Input.GetKey(KeyCode.A) && playerState != State.OnRope)
->>>>>>> 0ee4b70b44fac449491627d38ce3d791e60364e9
 		{
 			transform.rotation = Quaternion.Euler(0, -90, 0);
 			Walk(-1);
