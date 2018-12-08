@@ -16,12 +16,14 @@ public class GameController : MonoBehaviour {
 
 	public List<GameObject> texts = new List<GameObject>();
 	public Canvas canvas;
+	public UIChange uiChange;
 
 	// 当玩家死了对应次数出现对应问题UI
 	void InitQuestion(int count)
 	{
 		//texts[count].SetActive(true);
 		// 暂停游戏，等待触发按钮事件
+		uiChange.SetUIText(count);
 	}
 	// Use this for initialization
 	void Start () {
@@ -51,7 +53,6 @@ public class GameController : MonoBehaviour {
 		Debug.Log("test");
 		InitQuestion(deadCount);
 		deadCount++;
-		play = Instantiate(player,startPos,Quaternion.Euler(0,0,0));
 	}
 
 	void FollowPlayer()
