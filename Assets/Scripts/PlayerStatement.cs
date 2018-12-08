@@ -10,6 +10,7 @@ public class PlayerStatement : MonoBehaviour
 	private float deathoffset;
 	private Animator animator;
 	public GameObject deathPrefab;
+	public bool gameEnd = false;
 
 	private void Start()
 	{
@@ -18,7 +19,13 @@ public class PlayerStatement : MonoBehaviour
 
 	private void Update() 
 	{
-		if (isAlive)
+		if (isAlive && gameEnd)
+		{
+			animator.SetFloat("Blendx", -0.5f, 1f, Time.deltaTime);
+			animator.SetFloat("Blendy", 0.5f, 1f, Time.deltaTime);
+			return;
+		}
+		else if (isAlive)
 		{
 			return;
 		}
@@ -40,9 +47,10 @@ public class PlayerStatement : MonoBehaviour
 
 	public void KneelDown()
 	{
+		GetComponent<Rigidbody>().velocity = Vector3.zero;
+		GetComponent<Move>().enabled = false;
 		transform.rotation = Quaternion.Euler(0, -90, 0);
-		animator.SetFloat("Blendx", -0.5f);
-		animator.SetFloat("Blendy", 0.5f);
+		gameEnd = true;
 	}
 
 	public void DeathInit()

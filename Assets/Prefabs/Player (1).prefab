@@ -1295,6 +1295,7 @@ MonoBehaviour:
   deathoffset: 1
   deathPrefab: {fileID: 1083351146150624, guid: 0ce2772e23761c54f91626c523cf56d0,
     type: 2}
+  gameEnd: 0
 --- !u!114 &114495449121461466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1311,8 +1312,8 @@ MonoBehaviour:
   playerState: 0
   switchTime: 0.2
   isGround: 0
-  jumpGlue: 0
-  speedGlue: 0
+  jumpGlue: 150
+  speedGlue: 0.66
   ropeSpeed: 0
   ropeNode: []
 --- !u!137 &137400809664629636
