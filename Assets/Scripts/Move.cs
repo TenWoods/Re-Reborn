@@ -115,7 +115,7 @@ public class Move : MonoBehaviour
 		animator.SetFloat("Blendx", -0.5f);
 		animator.SetFloat("Blendy", -0.5f);
 		rb.velocity = new Vector3(rb.velocity.x, 0, 0);
-		transform.localPosition += new Vector3(0, ropeSpeed * Time.deltaTime, 0);
+		transform.position += new Vector3(0, ropeSpeed * Time.deltaTime, 0);
 	}
 
 	private void Jump()
@@ -157,8 +157,6 @@ public class Move : MonoBehaviour
 		{
 			playerState = State.OnRope;
 			rb.velocity = Vector3.zero;
-			transform.parent = other.transform;
-			transform.localPosition = new Vector3(-1.6f, 0, -2.5f);
 			GetComponent<ConstantForce>().force = Vector3.zero;
 		}
 		if(other.transform.tag == "Rope" && other.name == "RopeParent" && playerState == State.OnRope)
