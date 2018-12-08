@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapInTime : TriggerThing {
+public class TrapByStep : TriggerThing {
+
+	public GameObject rock;
 
 	/// <summary>
 	/// OnTriggerEnter is called when the Collider other enters the trigger.
@@ -10,20 +12,10 @@ public class TrapInTime : TriggerThing {
 	/// <param name="other">The other Collider involved in this collision.</param>
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.CompareTag("Player"))
+		if(other.transform.tag == "Player")
 		{
-			Debug.Log(other.gameObject.name);
-			if(!isFirstTrig)
-			{
-				//init a UI
-				Debug.Log("Step in Trap");
-
-			}
-			other.gameObject.GetComponent<PlayerStatement>().Dead();
-			change.SetUIText(index);
-			OnCallGameSystem();
+			if(rock.GetComponent<HingeJoint>()!=null)
+				rock.GetComponent<HingeJoint>().breakForce = 0.1f;
 		}
-
-
 	}
 }
