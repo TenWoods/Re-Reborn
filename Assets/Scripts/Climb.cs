@@ -15,6 +15,7 @@ public class Climb : MonoBehaviour {
 		{
 			//other.gameObject.GetComponent<Move>()
 			Debug.Log("can climb rope");
+			
 		}
 	}
 }

@@ -1546,8 +1546,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 315780231}
-  m_LocalRotation: {x: 0.20753941, y: -0.111858085, z: 0.023895591, w: 0.97151643}
-  m_LocalPosition: {x: 26.02, y: 3.94, z: -8.57}
+  m_LocalRotation: {x: 0.21379995, y: -0.00000029839651, z: 0.000000065307226, w: 0.97687745}
+  m_LocalPosition: {x: 24.020004, y: 3.94, z: -8.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1704,35 +1704,33 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 1, y: 0, z: 0}
     roll: 0
-  - position: {x: 3, y: 0, z: 0}
-    roll: 0
   - position: {x: 5, y: 0, z: 0}
     roll: 0
-  - position: {x: 7, y: 0, z: 0}
-    roll: 0
-  - position: {x: 9, y: 0, z: 0}
-    roll: 0
-  - position: {x: 11, y: 0, z: 0}
-    roll: 0
-  - position: {x: 13, y: 0, z: 0}
+  - position: {x: 10, y: 0, z: 0}
     roll: 0
   - position: {x: 15, y: 0, z: 0}
     roll: 0
-  - position: {x: 17, y: 0, z: 0}
-    roll: 0
-  - position: {x: 19, y: 0, z: 0}
-    roll: 0
-  - position: {x: 21, y: 0, z: 0}
-    roll: 0
-  - position: {x: 23, y: 0, z: 0}
+  - position: {x: 20, y: 0, z: 0}
     roll: 0
   - position: {x: 25, y: 0, z: 0}
     roll: 0
-  - position: {x: 27, y: 0, z: 0}
+  - position: {x: 30, y: 0, z: 0}
     roll: 0
-  - position: {x: 29, y: 0, z: 0}
+  - position: {x: 35, y: 0, z: 0}
     roll: 0
-  - position: {x: 31, y: 0, z: 0}
+  - position: {x: 40, y: 0, z: 0}
+    roll: 0
+  - position: {x: 45, y: 0, z: 0}
+    roll: 0
+  - position: {x: 50, y: 0, z: 0}
+    roll: 0
+  - position: {x: 55, y: 0, z: 0}
+    roll: 0
+  - position: {x: 60, y: 0, z: 0}
+    roll: 0
+  - position: {x: 65, y: 0, z: 0}
+    roll: 0
+  - position: {x: 70, y: 0, z: 0}
     roll: 0
 --- !u!4 &364267803
 Transform:
@@ -3925,8 +3923,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1298863999}
-  m_LocalRotation: {x: 0.20753941, y: -0.111858085, z: 0.023895591, w: 0.97151643}
-  m_LocalPosition: {x: 26.02, y: 3.94, z: -8.57}
+  m_LocalRotation: {x: 0.21379995, y: -0.00000029839651, z: 0.000000065307226, w: 0.97687745}
+  m_LocalPosition: {x: 24.020004, y: 3.94, z: -8.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2049383462}
@@ -6261,7 +6259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 364267802}
-  m_PathPosition: 11.985001
+  m_PathPosition: 4.593758
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -6273,7 +6271,7 @@ MonoBehaviour:
   m_RollDamping: 0
   m_AutoDolly:
     m_Enabled: 1
-    m_PositionOffset: 1
+    m_PositionOffset: 0
     m_SearchRadius: 2
     m_SearchResolution: 5
 --- !u!114 &2049383464
