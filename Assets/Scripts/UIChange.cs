@@ -23,7 +23,7 @@ public class UIChange : MonoBehaviour
 		if (changeBackground)
 		{
 			float a = background.color.a;
-			a = Mathf.Lerp(a, targetColor_a, Time.deltaTime * changeSpeed);
+			a += Time.deltaTime * changeSpeed;
 			if (Mathf.Abs(a - targetColor_a) <= 0.1f)
 			{
 				a = targetColor_a;
@@ -38,6 +38,9 @@ public class UIChange : MonoBehaviour
 		uiText.gameObject.SetActive(true);
 		rebornButton.SetActive(true);
 		giveUpButton.SetActive(true);
+		background.gameObject.SetActive(true);
+		changeBackground = true;
+		targetColor_a = 255;
 		if (i >= uiStrings.Count)
 			return;
 		uiText.text = uiStrings[i];
@@ -48,6 +51,7 @@ public class UIChange : MonoBehaviour
 		uiText.gameObject.SetActive(false);
 		rebornButton.SetActive(false);
 		giveUpButton.SetActive(false);
+		background.gameObject.SetActive(false);
 	}
 
 	public void RebornButton()
@@ -56,6 +60,7 @@ public class UIChange : MonoBehaviour
 		targetColor_a = 0;
 		GameObject g = Instantiate(gc.player,gc.startPos,Quaternion.Euler(0,0,0));
 		gc.player = g;
+		gc.FollowPlayer(g);
 		CloseUI();
 	}
 

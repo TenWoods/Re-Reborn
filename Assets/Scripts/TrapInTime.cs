@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrapInTime : TriggerThing {
 
+	public UIChange change;
+	public int index;
 	/// <summary>
 	/// OnTriggerEnter is called when the Collider other enters the trigger.
 	/// </summary>
@@ -20,6 +22,7 @@ public class TrapInTime : TriggerThing {
 
 			}
 			other.gameObject.GetComponent<PlayerStatement>().Dead();
+			change.SetUIText(index);
 			OnCallGameSystem();
 		}
 
