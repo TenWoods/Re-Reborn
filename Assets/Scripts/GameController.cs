@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour {
 
 	public void AddDeadCount()
 	{
+		Debug.Log("test");
 		InitQuestion(deadCount);
 		deadCount++;
 		play = Instantiate(player,startPos,Quaternion.Euler(0,0,0));

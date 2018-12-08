@@ -12,7 +12,7 @@ public class TrapInTime : TriggerThing {
 	{
 		if(other.gameObject.CompareTag("Player"))
 		{
-			
+			Debug.Log(other.gameObject.name);
 			if(!isFirstTrig)
 			{
 				//init a UI

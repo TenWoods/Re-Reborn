@@ -34,6 +34,7 @@ public class PlayerStatement : MonoBehaviour
 		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
 		{
 			GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
+			//Debug.Log("find");
 			DeathInit();
 		}
 	}

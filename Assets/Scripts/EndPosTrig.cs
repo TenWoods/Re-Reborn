@@ -16,7 +16,7 @@ public class EndPosTrig : MonoBehaviour {
 			gm.GetComponent<Review>().StartReview =true;
 			GameObject player = GameObject.FindWithTag("Player");
 			player.GetComponent<PlayerStatement>().KneelDown();
-			//gm.GetComponent<Review>().mainCamera.GetComponent<Cinemachine.CinemachineBrain>().isActiveAndEnabled(false);
+			gm.GetComponent<Review>().mainCamera.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
 			
 		}
 	}
