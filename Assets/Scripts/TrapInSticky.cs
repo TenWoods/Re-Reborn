@@ -13,8 +13,8 @@ public class TrapInSticky : TriggerThing {
 		// TODO 调用一个使玩家减速的函数
 		if(other.gameObject.CompareTag("Player"))
 		{
-			other.gameObject.GetComponent<Move>().GlueReset();
-			Debug.Log("Slow down");
+			other.gameObject.GetComponent<Move>().GlueSet();
+			//Debug.Log("Slow down");
 		}
 	}
 	/// <summary>
@@ -25,8 +25,8 @@ public class TrapInSticky : TriggerThing {
 	{
 		if(other.gameObject.CompareTag("Player"))
 		{
-			other.gameObject.GetComponent<Move>().GlueSet();
-			Debug.Log("restart");
+			other.gameObject.GetComponent<Move>().GlueReset();
+			//Debug.Log("restart");
 		}
 	}
 }
