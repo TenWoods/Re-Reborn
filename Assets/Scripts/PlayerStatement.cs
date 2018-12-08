@@ -23,7 +23,11 @@ public class PlayerStatement : MonoBehaviour
 			return;
 		}
 		gameObject.GetComponent<Move>().enabled = false;
-		animator.SetFloat("Blend", 1);
+		animator.SetFloat("Blendy", -1.0f, 0.5f, Time.deltaTime);
+		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
+		{
+			DeathInit();
+		}
 	}
 
 	public void Dead()
@@ -34,7 +38,15 @@ public class PlayerStatement : MonoBehaviour
 
 	public void DeathInit()
 	{
-		Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 90, 0));
+		Debug.Log(transform.rotation.eulerAngles.y);
+		if (transform.rotation.eulerAngles.y > 85 && transform.rotation.eulerAngles.y < 265)
+		{
+			Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 90, 0));
+		}
+		else
+		{
+			Instantiate(deathPrefab, transform.position + new Vector3(0, deathoffset, 0), Quaternion.Euler(90, 270, 0));
+		}
 		Destroy(this.gameObject);
 	}
 
