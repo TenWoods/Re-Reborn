@@ -9,11 +9,13 @@ public class UIChange : MonoBehaviour
 	[SerializeField]
 	private List<string> uiStrings;
 	private bool changeBackground;
-	private float targetColor_a;
+	public float targetColor_a;
 	[SerializeField]
 	private float changeSpeed;
 	public Text uiText;
 	public Image background;
+	public GameObject rebornButton;
+	public GameObject giveUpButton;
 	public GameController gc;
 
 	private void Update() 
@@ -33,9 +35,19 @@ public class UIChange : MonoBehaviour
 
 	public void SetUIText(int i)
 	{
+		uiText.gameObject.SetActive(true);
+		rebornButton.SetActive(true);
+		giveUpButton.SetActive(true);
 		if (i >= uiStrings.Count)
 			return;
 		uiText.text = uiStrings[i];
+	}
+
+	public void CloseUI()
+	{
+		uiText.gameObject.SetActive(false);
+		rebornButton.SetActive(false);
+		giveUpButton.SetActive(false);
 	}
 
 	public void RebornButton()
@@ -44,6 +56,7 @@ public class UIChange : MonoBehaviour
 		targetColor_a = 0;
 		GameObject g = Instantiate(gc.player,gc.startPos,Quaternion.Euler(0,0,0));
 		gc.player = g;
+		CloseUI();
 	}
 
 	public void GiveUpButton()
