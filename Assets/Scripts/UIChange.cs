@@ -38,6 +38,8 @@ public class UIChange : MonoBehaviour
 		uiText.gameObject.SetActive(true);
 		rebornButton.SetActive(true);
 		giveUpButton.SetActive(true);
+		changeBackground = true;
+		targetColor_a = 1;
 		if (i >= uiStrings.Count)
 			return;
 		uiText.text = uiStrings[i];
