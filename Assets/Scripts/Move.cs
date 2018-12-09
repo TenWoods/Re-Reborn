@@ -42,6 +42,8 @@ public class Move : MonoBehaviour
 	private int ropeCount;
 	[SerializeField]
 	public GameObject[] ropeNode;
+	public AudioSource audioSource;
+	public AudioClip[] clips;
 
 	private void Start() 
 	{
@@ -79,6 +81,7 @@ public class Move : MonoBehaviour
 			{
 				OnRope();
 			}
+			audioSource.Stop();
 		}
 		if (!Input.anyKey)
 		{
@@ -101,6 +104,11 @@ public class Move : MonoBehaviour
 			playerState = State.Walk;
 			animator.SetFloat("Blendx", walkAnimate_x, switchTime, Time.deltaTime);
 			animator.SetFloat("Blendy", walkAnimate_y);
+			if (!audioSource.isPlaying)
+			{
+				//audioSource.clip = clips[0];
+				audioSource.Play();
+			}
 		}
 		else if (playerState == State.Walk)
 		{
@@ -173,6 +181,7 @@ public class Move : MonoBehaviour
 		walkAnimate_x = 1.0f;
 		m_jumpForce = jumpGlue;
 		m_speed = speedGlue;
+		audioSource.clip = clips[1];
 	}
 
 	public void GlueReset()
@@ -180,5 +189,6 @@ public class Move : MonoBehaviour
 		walkAnimate_x = -1.0f;
 		m_jumpForce = jumpForce;
 		m_speed = speed;
+		audioSource.clip = clips[0];
 	}
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TriggerThing : MonoBehaviour {
 	public GameController gameSystem;
-	public GameObject myCanvas;
-
+	//public GameObject myCanvas;
+	public UIChange change;
+	public int index;
 	protected bool isFirstTrig = false;
 
 	/// <summary>

@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 	{
 		//texts[count].SetActive(true);
 		// 暂停游戏，等待触发按钮事件
-		uiChange.SetUIText(count);
+		//uiChange.SetUIText(count);
 	}
 	// Use this for initialization
 	void Start () {
@@ -53,12 +53,13 @@ public class GameController : MonoBehaviour {
 		Debug.Log("test");
 		InitQuestion(deadCount);
 		deadCount++;
+		
 	}
 
-	void FollowPlayer()
+	public void FollowPlayer(GameObject play)
 	{
 		//
-		play.SetActive(true);
+		//play.SetActive(true);
 		cineMachine.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_Follow = play.transform;
 		cineMachine.GetComponent<Cinemachine.CinemachineVirtualCamera>().m_LookAt = play.transform;
 	}

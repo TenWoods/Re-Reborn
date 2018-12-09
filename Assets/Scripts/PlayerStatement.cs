@@ -23,22 +23,23 @@ public class PlayerStatement : MonoBehaviour
 		{
 			animator.SetFloat("Blendx", -0.5f, 1f, Time.deltaTime);
 			animator.SetFloat("Blendy", 0.5f, 1f, Time.deltaTime);
-			if (Mathf.Abs(animator.GetFloat("Blendy") - 0.1f) <= 0.006f)
+			if (Mathf.Abs(animator.GetFloat("Blendy") - 0.5f) <= 0.05f)
 			{
 				GameObject.Find("GameSystem").GetComponent<Review>().StartReview = true;
 			}
+			GetComponent<Move>().audioSource.enabled = false;
 			return;
 		}
 		else if (isAlive)
 		{
+			GetComponent<Move>().audioSource.enabled = true;
 			return;
 		}
 		gameObject.GetComponent<Move>().enabled = false;
-		animator.SetFloat("Blendx", 0.0f);
 		animator.SetFloat("Blendy", -1.0f, 0.5f, Time.deltaTime);
-		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.05f)
+		if (Mathf.Abs(animator.GetFloat("Blendy") + 1.0f) <= 0.08f)
 		{
-			GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
+			//GameObject.Find("GameSystem").GetComponent<GameController>().SendMessage("FollowPlayer");
 			//Debug.Log("find");
 			DeathInit();
 		}
