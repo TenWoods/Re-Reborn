@@ -910,7 +910,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948563518099474}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 36.63, y: 0, z: 0}
+  m_LocalPosition: {x: 37.2, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4641079055895558}
@@ -1264,8 +1264,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.61430526, y: 1.2206432, z: 0.2645231}
-  m_Center: {x: 0.019564226, y: 0.6098328, z: 0.024515897}
+  m_Size: {x: 0.5, y: 1, z: 0.2}
+  m_Center: {x: 0.019564211, y: 0.5641513, z: 0.024515897}
 --- !u!75 &75532460893213826
 ConstantForce:
   m_ObjectHideFlags: 1
@@ -1273,7 +1273,7 @@ ConstantForce:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948563518099474}
   m_Enabled: 1
-  m_Force: {x: 0, y: -9.8, z: 0}
+  m_Force: {x: 0, y: -10, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   playerState: 0
   switchTime: 0.2
   isGround: 0
-  jumpGlue: 200
+  jumpGlue: 280
   speedGlue: 2.5
   ropeSpeed: 2
   ropeNode: []
@@ -1536,8 +1536,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.57, z: 0}
+  m_Radius: 0.42466953
+  m_Center: {x: 0, y: 0.49466956, z: 0}
 --- !u!137 &137400809664629636
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
