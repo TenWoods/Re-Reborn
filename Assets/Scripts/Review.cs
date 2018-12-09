@@ -12,6 +12,7 @@ public class Review : MonoBehaviour
 	[SerializeField]
 	private float moveSpeed;
 	public Camera mainCamera;
+	public GameObject rocks;
 	
 
 	private void Start() 
@@ -32,6 +33,7 @@ public class Review : MonoBehaviour
 			mainCamera.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
 			GameObject.FindWithTag("Player").GetComponent<PlayerStatement>().gameEnd = false;
 			GameObject.FindWithTag("Player").GetComponent<Move>().enabled = true;
+			rocks.SetActive(true);
 			return;
 		}
 		float x = mainCamera.transform.position.x;

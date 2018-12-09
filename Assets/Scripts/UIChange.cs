@@ -74,7 +74,7 @@ public class UIChange : MonoBehaviour
 
 	public void GiveUpButton()
 	{
-		EditorSceneManager.LoadScene(1);
+		EditorSceneManager.LoadScene(0);
 	}
 
 	public bool ChangeBackground 
