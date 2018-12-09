@@ -2415,7 +2415,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!1 &203854755
 GameObject:
@@ -4895,9 +4895,10 @@ GameObject:
   m_Component:
   - component: {fileID: 438473080}
   - component: {fileID: 438473081}
+  - component: {fileID: 438473082}
   m_Layer: 0
-  m_Name: rope
-  m_TagString: Untagged
+  m_Name: RopeParent
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4933,6 +4934,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79bfb8c5edb449fba4396a4707a4091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &438473082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438473079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.5617008, z: 1}
+  m_Center: {x: 0, y: 0.6073656, z: 0}
 --- !u!1 &450150351
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,7 +8508,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!1 &851871449
 GameObject:
@@ -8772,7 +8785,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 870828176}
-  m_LocalRotation: {x: 0.20091043, y: -0.09203932, z: 0.018964019, w: 0.9750919}
+  m_LocalRotation: {x: 0.20091109, y: -0.09203942, z: 0.018964104, w: 0.9750917}
   m_LocalPosition: {x: 56.000034, y: 9.199946, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13626,7 +13639,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!1 &1248869853
 GameObject:
@@ -14102,7 +14115,7 @@ GameObject:
   - component: {fileID: 1292183632}
   m_Layer: 0
   m_Name: Cylinder (6)
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14188,7 +14201,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!1 &1293843945
 GameObject:
@@ -16720,6 +16733,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 75532460893213826, guid: 3c8378377fa1a4d608b3f4600e9fce9c,
+        type: 2}
+      propertyPath: m_Force.y
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8378377fa1a4d608b3f4600e9fce9c, type: 2}
@@ -19530,7 +19548,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!1 &1758068467
 GameObject:
@@ -20910,6 +20928,10 @@ Prefab:
       propertyPath: gameSystem
       value: 
       objectReference: {fileID: 14892105}
+    - target: {fileID: 1591547474915182, guid: c312a521b8dff4c9186d3f5ef63a6976, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c312a521b8dff4c9186d3f5ef63a6976, type: 2}
   m_IsPrefabAsset: 0
@@ -21018,7 +21040,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!1 &1919639357
 GameObject:
@@ -21884,7 +21906,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!4 &2007964833 stripped
 Transform:
@@ -22302,7 +22324,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2077228905}
-  m_LocalRotation: {x: 0.20091043, y: -0.09203932, z: 0.018964019, w: 0.9750919}
+  m_LocalRotation: {x: 0.20091109, y: -0.09203942, z: 0.018964104, w: 0.9750917}
   m_LocalPosition: {x: 56.000034, y: 9.199946, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

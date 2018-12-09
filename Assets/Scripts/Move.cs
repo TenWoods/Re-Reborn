@@ -85,15 +85,16 @@ public class Move : MonoBehaviour
 		}
 		if (!Input.anyKey)
 		{
-			if (playerState != State.Jump)
+			if (playerState == State.Idle || playerState == State.Walk)
 			{
-				rb.velocity = Vector3.zero;
+				rb.velocity = new Vector3(0, rb.velocity.y, 0);
 			}
 			if (isGround)
 			{
 				animator.SetFloat("Blendx", 0.0f);
 				animator.SetFloat("Blendy", 0.0f);
 			}
+			audioSource.Stop();
 		}
 	}
 
@@ -106,7 +107,7 @@ public class Move : MonoBehaviour
 			animator.SetFloat("Blendy", walkAnimate_y);
 			if (!audioSource.isPlaying)
 			{
-				//audioSource.clip = clips[0];
+				audioSource.clip = clips[0];
 				audioSource.Play();
 			}
 		}
@@ -122,8 +123,10 @@ public class Move : MonoBehaviour
 	{
 		animator.SetFloat("Blendx", -0.5f);
 		animator.SetFloat("Blendy", -0.5f);
-		rb.velocity = new Vector3(rb.velocity.x, 0, 0);
-		transform.position += new Vector3(0, ropeSpeed * Time.deltaTime, 0);
+		//rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+		float y = transform.localPosition.y + ropeSpeed * Time.deltaTime;
+		transform.localPosition = new Vector3(-2.0f, y, 0);
+		
 	}
 
 	private void Jump()
@@ -166,12 +169,14 @@ public class Move : MonoBehaviour
 			playerState = State.OnRope;
 			rb.velocity = Vector3.zero;
 			GetComponent<ConstantForce>().force = Vector3.zero;
+			transform.parent = other.transform;
+			transform.localPosition = new Vector3(-2.0f, 0, 0);
 		}
 		if(other.transform.tag == "Rope" && other.name == "RopeParent" && playerState == State.OnRope)
 		{
 			playerState = State.Idle;
 			transform.parent = null;
-			transform.position = other.transform.position + new Vector3(0.5f, 0, 0);
+			rb.AddForce(new Vector3(0, 650, 0));
 			GetComponent<ConstantForce>().force = new Vector3(0, -9.8f, 0);
 		}
 	}
@@ -181,7 +186,7 @@ public class Move : MonoBehaviour
 		walkAnimate_x = 1.0f;
 		m_jumpForce = jumpGlue;
 		m_speed = speedGlue;
-		audioSource.clip = clips[1];
+		audioSource.pitch = 0.43f;
 	}
 
 	public void GlueReset()
@@ -189,6 +194,6 @@ public class Move : MonoBehaviour
 		walkAnimate_x = -1.0f;
 		m_jumpForce = jumpForce;
 		m_speed = speed;
-		audioSource.clip = clips[0];
+		audioSource.pitch = 1;
 	}
 }
