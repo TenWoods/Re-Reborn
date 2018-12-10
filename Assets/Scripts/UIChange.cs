@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 
 public class UIChange : MonoBehaviour 
 {
@@ -74,7 +73,8 @@ public class UIChange : MonoBehaviour
 
 	public void GiveUpButton()
 	{
-		EditorSceneManager.LoadScene(0);
+		//EditorSceneManager.LoadScene(0);
+		Application.LoadLevel(1);
 	}
 
 	public bool ChangeBackground 
