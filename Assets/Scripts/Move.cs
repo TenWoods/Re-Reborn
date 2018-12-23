@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum State
 {
-	Jump,
-	Walk,
-	Idle,
-	OnRope
+    Jump,
+    Walk,
+    Idle,
+    OnRope
 }
 
 public class Move : MonoBehaviour 
