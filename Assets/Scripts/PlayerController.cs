@@ -11,7 +11,8 @@ namespace  Player
 	        Jump,
 	        Walk,
 	        Idle,
-	        OnRope
+	        OnRope,
+            Dead
         }
 
         [SerializeField]
@@ -27,10 +28,13 @@ namespace  Player
         [SerializeField]
         private float jumpTime;           //跳跃时间
         private float jumpTimer;          //跳跃时间计数器
-        [SerializeField]//debug
         private bool isOnRope;            //在绳子上
         [SerializeField]
         private float ropeSpeed;          //绳子上的速度
+        [SerializeField]//debug
+        private bool isDead;              //是否死亡
+        [SerializeField]
+        private float deadOffset;
         private Rigidbody m_rigidbody;
         private Animator m_animator;
         private ConstantForce m_constantForce;
@@ -42,6 +46,7 @@ namespace  Player
             m_constantForce = GetComponent<ConstantForce>();
             isGround = true;
             isOnRope = false;
+            isDead = false;
             playerState = State.Idle;
             jumpColdTimer = jumpColdTime + 1;
         }
@@ -80,9 +85,13 @@ namespace  Player
             {
                 playerState = State.OnRope;
             }
+            if (isDead)
+            {
+                playerState = State.Dead;
+            }
             if (!Input.anyKey)
             {
-                if (!isOnRope)
+                if (!isOnRope && !isDead)
                 {
                     playerState = State.Idle;
                 } 
@@ -98,6 +107,7 @@ namespace  Player
                 case State.Walk : Walk(); break;
                 case State.Jump : Jump(); break;
                 case State.OnRope : OnRope(); break;
+                case State.Dead : Dead(); break;
             }
         }
 
@@ -110,10 +120,18 @@ namespace  Player
             }
         }
 
+        //设置渐变动画
         private void SetAnimate(float x, float y, float time)
         {
             m_animator.SetFloat("Blendx", x, time, Time.deltaTime);
             m_animator.SetFloat("Blendy", y, time, Time.deltaTime);
+        }
+
+        //直接设置动画
+        private void SetAnimate(float x, float y)
+        {
+            m_animator.SetFloat("Blendx", x);
+            m_animator.SetFloat("Blendy", y);
         }
 
         #region 人物状态
@@ -171,13 +189,22 @@ namespace  Player
             SetAnimate(-0.5f, 0.5f, 0);
         }
 
+        private void Dead()
+        {
+            Vector3 velocity = new Vector3(0, m_rigidbody.velocity.y, 0);
+            m_rigidbody.velocity = velocity;
+            float yRotate = transform.rotation.y;
+            //transform.rotation = Quaternion.Euler(90, yRotate, 0);
+            //transform.position = new Vector3(0, deadOffset, 0);
+            SetAnimate(0, -1);
+        }
+
         #endregion
 
         private void OnCollisionEnter(Collision other)
         {
             if (other.transform.tag == "Floor")
             {
-                
                 isGround = true;
             }
         }
